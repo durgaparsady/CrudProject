@@ -45,25 +45,23 @@ public class ProductService {
 	}
 
 	public Product get(long id) {
-		return repo.findById(id).get();
+		return  repo.findById(id).get();
 	}
-
-	public Product update(UpdateRequest rrequest, HttpSession httpSession) throws IOException {
+   public Product update(UpdateRequest rrequest, HttpSession httpSession) throws IOException {
 		Product request = get(rrequest.getId());
-		if (request != null) {
+		if(request!=null) {
 			request.setName(rrequest.getName());
 			request.setBrand(rrequest.getBrand());
 			request.setPrice(rrequest.getPrice());
-			if (!rrequest.getImage().isEmpty()) {
-				String img = ProductImageData.ImageUploade(rrequest.getImage(), httpSession);
-				request.setFileName(img);
-				request.setImage(rrequest.getImage().getBytes());
-			}
+		  if(!rrequest.getImage().isEmpty()) {
+			String img=ProductImageData.ImageUploade(rrequest.getImage(), httpSession);
+			request.setFileName(img);
+			request.setImage(rrequest.getImage().getBytes());
+		  }
 			return repo.save(request);
 		}
-		return null;
-	}
-
+	    return null;
+   }
 	public void delete(long id) {
 		repo.deleteById(id);
 	}

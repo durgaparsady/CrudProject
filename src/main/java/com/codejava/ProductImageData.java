@@ -20,7 +20,6 @@ public class ProductImageData {
 			FileOutputStream fos = new FileOutputStream(path);
 			fos.write(data);
 			fos.close();
-			System.out.println("Image Upload");
 			return filename;
 		}		
 		return null;

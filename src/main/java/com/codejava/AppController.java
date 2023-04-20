@@ -44,7 +44,8 @@ public class AppController {
 
 		Page<Product> page = service.listAll(currentPage, sortField, sortDir,keyword,min,max);
 		long totalItems = page.getTotalElements();
-		int totalPages = page.getTotalPages(); 
+		int totalPages = page.getTotalPages();
+
 		List<Product> listProducts = page.toList();
 		model.addAttribute("listProducts", listProducts);
 		model.addAttribute("totalItems", totalItems);
